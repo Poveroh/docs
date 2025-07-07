@@ -1,45 +1,70 @@
-# docs
+<div align="center">
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+<img src="https://raw.githubusercontent.com/Poveroh/poveroh/refs/heads/main/assets/bg_readme.png" alt="Poveroh icon" style="border-radius:10px" />
 
-Run development server:
 
-```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
-```
+# Poveroh Docs
 
-Open http://localhost:3000 with your browser to see the result.
+### Open-source platform for tracking personal finance — built for clarity
 
-## Explore
+[📂 Report Bug](https://github.com/Poveroh/poveroh/issues/) · [✨ Request Feature](https://github.com/Poveroh/poveroh/issues/)
 
-In the project, you can see:
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+![Commit Activity](https://img.shields.io/github/commit-activity/w/poveroh/poveroh)
+![Contributors](https://img.shields.io/github/contributors/poveroh/poveroh)
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `app/layout.config.tsx`: Shared options for layouts, optional but preferred to keep.
+> “Money doesn’t buy happiness, but I’d rather cry in a Ferrari.”
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+</div>
 
-### Fumadocs MDX
+---
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+## 📘 About this documentation
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+This repository contains the documentation for **[Poveroh](https://github.com/Poveroh/poveroh)** — an open-source, self-hostable platform to manage personal finances.
 
-## Learn More
+Whether you're setting it up locally, deploying with Docker, or exploring contribution guidelines, this repo provides everything you need.
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+## 🚀 Project Overview
+
+**Poveroh** helps you:
+
+- Track expenses and income across multiple accounts
+- Import transactions manually or via CSV/PDF
+- Take monthly financial snapshots
+- Track investments (ETFs, stocks, crypto, etc.)
+- Generate reports to visualize your financial growth
+
+For more, check the [GitHub repository](https://github.com/Poveroh/poveroh).
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions!  
+Please read the [contribution guide](./docs/CONTRIBUTING.md) to learn how to get started.
+
+> The main development branch is `main`.
+
+---
+
+## 📜 License
+
+This project is licensed under the **GNU AGPLv3**.  
+See [LICENSE](https://github.com/Poveroh/poveroh/blob/main/LICENSE) for full details.
+
+---
+
+## 🔗 Useful Links
+
+- [Main Repository](https://github.com/Poveroh/poveroh)
+- [Live Figma Design](https://www.figma.com/design/SZz6f8cZ1mIE5s6Z4WGshu/Poveroh)
+- [Issue Tracker](https://github.com/Poveroh/poveroh/issues)
+
+---
+
+<div align="center">
+Made with ❤️ by the Poveroh community
+</div>
