@@ -69,7 +69,7 @@ See [LICENSE](https://github.com/Poveroh/poveroh/blob/main/LICENSE) for full det
 ## 🔗 Useful Links
 
 - [Main Repository](https://github.com/Poveroh/poveroh)
-- [Figma file](https://www.figma.com/design/SZz6f8cZ1mIE5s6Z4WGshu/Poveroh?node-id=232-100&t=1ozuf8X78WOqBXYH-1)
+- [Figma file](https://www.figma.com/design/SZz6f8cZ1mIE5s6Z4WGshu/Poveroh)
 - [Issue Tracker](https://github.com/Poveroh/poveroh/issues)
 
 ---
