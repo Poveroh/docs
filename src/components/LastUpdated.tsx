@@ -10,7 +10,7 @@ export function LastUpdated({ date }: LastUpdatedProps) {
   });
 
   return (
-    <div className="text-sm text-muted-foreground border-t pt-4 mt-8">
+    <div className="text-sm text-muted-foreground">
       Last Updated: {formattedDate}
     </div>
   );
