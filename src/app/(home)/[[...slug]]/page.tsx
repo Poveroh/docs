@@ -26,9 +26,6 @@ export default async function Page(props: {
     path: `content/docs/${page.file.path}`,
   });
 
-  console.log("Last edit time:", page.file.path);
-  console.log("Last edit time:", time);
-
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
@@ -36,7 +33,6 @@ export default async function Page(props: {
       <DocsBody>
         <MDXContent
           components={getMDXComponents({
-            // this allows you to link to other pages with relative file paths
             a: createRelativeLink(source, page),
           })}
         />
