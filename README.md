@@ -48,14 +48,39 @@ Whether you're setting it up locally, deploying with Docker, or exploring contri
 
 For more, check the [GitHub repository](https://github.com/Poveroh/poveroh).
 
----
+--
 
-## 🤝 Contributing
+## :running: Run Locally
 
-We welcome contributions!  
-Please read the [contribution guide](./docs/CONTRIBUTING.md) to learn how to get started.
+1. Clone the project
 
-> The main development branch is `main`.
+   ```bash
+   git clone https://github.com/Poveroh/docs.git
+   ```
+
+2. Go to the project folder
+
+   ```bash
+   cd docs
+   ```
+
+3. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+4. Build project
+
+   ```bash
+   npm run build
+   ```
+
+5. Run project
+
+   ```bash
+   npm run dev
+   ```
 
 ---
 
@@ -71,9 +96,3 @@ See [LICENSE](https://github.com/Poveroh/poveroh/blob/main/LICENSE) for full det
 - [Main Repository](https://github.com/Poveroh/poveroh)
 - [Figma file](https://www.figma.com/design/SZz6f8cZ1mIE5s6Z4WGshu/Poveroh)
 - [Issue Tracker](https://github.com/Poveroh/poveroh/issues)
-
----
-
-<div align="center">
-Made with ❤️ by the Poveroh community
-</div>
