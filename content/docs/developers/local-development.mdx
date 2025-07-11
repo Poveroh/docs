@@ -1,0 +1,92 @@
+---
+title: Local Development
+description: How to set up a local development environment for Poveroh
+icon: Terminal
+---
+
+Poveroh is designed to be easy to set up and run locally. This guide will walk you through the steps to get started with local development.
+
+If you have `MacOS`, `Linux`, or `Windows`, you can follow these instructions to set up your local development environment. All scripts are written in JavaScript and can be run using `npm` or `yarn`, so it runs on any platform that supports Node.js. 
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/download/package-manager) (>= 18.x)
+- [Docker](https://docs.docker.com/get-started/get-docker/) - to run PostgreSQL and NGIX CDN
+- [Git](https://git-scm.com/) (for version control)
+- A code editor (e.g., [Visual Studio Code](https://code.visualstudio.com/))
+
+## Run Locally
+
+### Get start
+
+1. Clone the project
+
+    ```bash
+    git clone https://github.com/Poveroh/poveroh.git
+    ```
+
+2. Go to the project folder
+
+    ```bash
+    cd poveroh
+    ```
+
+3. Install dependencies
+
+    ```bash
+    npm install
+    ```
+
+4. Copy `.env.example` file to `.env`, then edit it with the necessary values. For more details, read [docs](https://github.com/Poveroh/poveroh/blob/main/docs/ENV_SETUP.md).
+
+    > If you don't modify them, the default values are sufficient to run the project.
+    >
+    > **Warning**: Since these are default values, security is not guaranteed.
+
+### Setup Database and CDN
+
+> Docker and Docker Compose must be installed, up, and running on the machine.
+
+1. Run `setup` file
+
+    ```bash
+    npm run setup
+    ```
+
+    The command will execute the following steps:
+    - Create and run database docker image.
+    - Navigate to the `packages/prisma` directory.
+    - Generate the Prisma client.
+    - Apply any pending migrations to the database using Prisma.
+    - Create and run CDN ngix docker image.
+
+    > **⚠️ Warning:**  
+    > If you encounter any difficulties or something doesn't go as planned, read [this file](scripts/README.md) to execute it manually.
+
+2. Create a user; open a browser to [localhost:3000/sign-up](http://localhost:3000/sign-up) and sign up.
+
+3. _Optionally_, you can run the following exactly script to generate and fill database with fake data:
+
+    ```bash
+    npm run setup:data --user=<user_id_created_before>
+    ```
+
+    > You can find user ID on the [personal information page](http://localhost:3000/account/profile)
+
+### Build and run
+
+1. Build project
+
+    ```bash
+    npm run build
+    ```
+
+2. Run project
+
+    ```bash
+    npm run dev
+    ```
+
+

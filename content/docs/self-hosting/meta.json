@@ -1,0 +1,27 @@
+{
+  "title": "Self Hosting",
+  "description": "How to self-host Poveroh",
+  "icon": "Building",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "what-is-fumadocs",
+    "comparisons",
+    "---Setup---",
+    "manual-installation",
+    "...",
+    "(integrations)",
+    "---Writing---",
+    "page-conventions",
+    "markdown",
+    "navigation",
+    "---UI---",
+    "customisation",
+    "theme",
+    "search",
+    "components",
+    "mdx",
+    "layouts"
+  ]
+}

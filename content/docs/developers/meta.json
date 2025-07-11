@@ -1,0 +1,7 @@
+{
+  "title": "Developers",
+  "description": "Getting started",
+  "icon": "CodeXml",
+  "root": true,
+  "pages": ["---Getting started---", "index", "local-development"]
+}
