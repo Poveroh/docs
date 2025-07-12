@@ -3,5 +3,14 @@
   "description": "Getting started",
   "icon": "CodeXml",
   "root": true,
-  "pages": ["---Getting started---", "index", "local-development"]
+  "pages": [
+    "---Getting started---",
+    "index",
+    "local-development",
+    "---Contributing---",
+    "contributing/index",
+    "contributing/architecture",
+    "contributing/pr",
+    "contributing/styles"
+  ]
 }

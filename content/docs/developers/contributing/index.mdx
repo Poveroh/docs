@@ -1,0 +1,157 @@
+---
+title: Introduction
+description: Contributing to Poveroh, developing and best practices.
+icon: Github
+---
+
+
+Poveroh repository follows the [GitHub](https://docs.github.com/en/get-started/using-github/github-flow) approach.
+
+The development branch is `main`.
+
+Before starting to work on a new feature or fix, create a new branch from `main` with a descriptive name. For example, if you are working on a new feature called "user authentication", you can create a branch named `feature/user-authentication`.
+
+When you finish your work, push the branch to the remote repository and create a pull request (PR) against the `main` branch.
+
+## Get start develop
+
+1. [Fork](https://github.com/Poveroh/poveroh/fork/) this repository and then [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) it to your local device.
+2. Go to the project folder
+
+    ```bash
+    cd poveroh
+    ```
+
+3. Create a new branch:
+    ```bash
+    git checkout -b <feature_or_fix_or_else>/BRANCH_NAME
+    ```
+
+4. Install dependencies
+
+    ```bash
+    npm install
+    ```
+
+6. Copy `.env.example` file to `.env`, then edit it with the necessary values. For more details, read [docs](https://github.com/Poveroh/poveroh/blob/main/docs/ENV_SETUP.md).
+
+    > If you don't modify them, the default values are sufficient to run the project.
+    >
+    > **Warning**: Since these are default values, security is not guaranteed.
+
+### Setup Database and CDN
+
+> Docker and Docker Compose must be installed, up, and running on the machine.
+
+1. Run `setup` file
+
+    ```bash
+    npm run setup
+    ```
+
+    The command will execute the following steps:
+    - Create and run database docker image.
+    - Navigate to the `packages/prisma` directory.
+    - Generate the Prisma client.
+    - Apply any pending migrations to the database using Prisma.
+    - Create and run CDN ngix docker image.
+
+    > **⚠️ Warning:**  
+    > If you encounter any difficulties or something doesn't go as planned, read [this file](./scripts/README.md) to execute it manually.
+
+2. Create a user; open a browser to [localhost:3000/sign-up](http://localhost:3000/sign-up) and sign up.
+
+3. _Optionally_, you can run the following exactly script to generate and fill database with fake data:
+
+    ```bash
+    npm run setup:data --user=<user_id_created_before>
+    ```
+
+    > You can find user ID on the [personal information page](http://localhost:3000/account/profile)
+
+### Build and run
+
+1. Build project
+
+    ```bash
+    npm run build
+    ```
+
+    Please be sure that you can make a full production build before pushing code.
+
+    Before commit, husky will run the build command to ensure that the project can be built successfully.
+
+2. Run project
+
+    ```bash
+    npm run dev
+    ```
+
+## Clean up
+
+You can select what to clean up by passing the following arguments:
+
+- Remove node_modules and all build artifacts
+    ```bash
+    npm run clean
+    ```
+
+- Clean build artifacts (.next, dist, .turbo, storybook-static)
+    ```bash
+    npm run clean:build
+    ```
+
+- Clean only Turbo cache
+    ```bash
+    npm run clean:turbo
+    ```
+
+- Remove all .env files
+    ```bash
+    npm run clean:env
+    ```
+
+- Clean seeded database data
+    ```bash
+    npm run clean:db
+    ```
+
+
+## Linting & Formatting
+
+Make sure code is formatted and linted before committing.
+
+Run the following command to format and lint the code:
+
+```bash
+npm run format
+```
+
+## Debugging & Logging
+
+To debug the project, you can use the built-in debugging tools in your IDE or editor.
+
+If you use VSCode, you can go to the `Run and Debug` section and select one of the following options.
+
+Remember that you must run `npm run dev` before starting the debugging session.
+
+If you want to debug both simultaneously, you can select `Poveroh:app+api` in the `Run and Debug` section of VSCode.
+This will start both the frontend and backend in debug mode, allowing you to debug both at the same time.
+
+### Frontend
+
+If you run comand `npm run dev`, automatically the project will be started in debug mode, so in console you can see the logs and debug information.
+
+While coding, it is recommmended to use `logger.debug` to log debug information. In production, these logs will not be displayed, but in development mode, they will be visible in the console.
+Make sure to print debug information only when necessary, as it can clutter the console and make it harder to find important logs.
+
+If you want to debug it, you can use the browser's developer tools or if you use VSCode, you can go in the `Run and Debug` section and select `Poveroh:app`.
+
+### Backend
+
+In backend, logs are printed in a folder `logs` under `api` folder. Logs file are in `gitignore`, so they are not pushed to the repository.
+
+Unlike the frontend, debug logs are not printed when running the `npm run dev` command, but only if `LOG_LEVEL` is set to `DEBUG`. Default value is `INFO`.
+
+Like the frontend, you can attach a debugger to the backend. If you use VSCode, you can go in the `Run and Debug` section and select `Poveroh:api`. 
+
