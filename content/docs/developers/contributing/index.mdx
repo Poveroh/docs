@@ -1,157 +1,261 @@
 ---
-title: Introduction
+title: Commands
 description: Contributing to Poveroh, developing and best practices.
-icon: Github
+icon: Terminal
 ---
 
+This document provides a comprehensive overview of the available project commands for building, developing, setting up, cleaning, formatting, Docker integration, Prisma, and management tasks.
 
-Poveroh repository follows the [GitHub](https://docs.github.com/en/get-started/using-github/github-flow) approach.
+---
 
-The development branch is `main`.
+## Build
 
-Before starting to work on a new feature or fix, create a new branch from `main` with a descriptive name. For example, if you are working on a new feature called "user authentication", you can create a branch named `feature/user-authentication`.
+### All
+Builds all packages and applications in the project.
+```bash
+npm run build
+```
 
-When you finish your work, push the branch to the remote repository and create a pull request (PR) against the `main` branch.
+### Internal Packages
+Builds all internal packages, including:
+- `types`
+- `prisma`
+- `utils`
+```bash
+npm run build:packages
+```
 
-## Get start develop
+### Individual Packages
+Builds the `types` package.
+```bash
+npm run build:types
+```
 
-1. [Fork](https://github.com/Poveroh/poveroh/fork/) this repository and then [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) it to your local device.
-2. Go to the project folder
+Builds the `prisma` package.
+```bash
+npm run build:prisma
+```
 
-    ```bash
-    cd poveroh
-    ```
+Builds the `utils` package.
+```bash
+npm run build:utils
+```
 
-3. Create a new branch:
-    ```bash
-    git checkout -b <feature_or_fix_or_else>/BRANCH_NAME
-    ```
+### Individual Applications
+Builds the Storybook documentation.
+```bash
+npm run build:storybook
+```
 
-4. Install dependencies
+Builds the backend API.
+```bash
+npm run build:api
+```
 
-    ```bash
-    npm install
-    ```
+Builds the frontend application.
+```bash
+npm run build:app
+```
 
-6. Copy `.env.example` file to `.env`, then edit it with the necessary values. For more details, read [docs](https://github.com/Poveroh/poveroh/blob/main/docs/ENV_SETUP.md).
+---
 
-    > If you don't modify them, the default values are sufficient to run the project.
-    >
-    > **Warning**: Since these are default values, security is not guaranteed.
+## Development
 
-### Setup Database and CDN
+### Start Development Servers
+Starts dev servers for the API and the frontend app.
+```bash
+npm run dev
+```
 
-> Docker and Docker Compose must be installed, up, and running on the machine.
+Starts dev servers for all projects: API, app, Storybook, etc.
+```bash
+npm run dev:all
+```
 
-1. Run `setup` file
+### Start Individual Dev Servers
+Runs Storybook in development mode.
+```bash
+npm run dev:storybook
+```
 
-    ```bash
-    npm run setup
-    ```
+Starts the backend API in dev mode.
+```bash
+npm run dev:api
+```
 
-    The command will execute the following steps:
-    - Create and run database docker image.
-    - Navigate to the `packages/prisma` directory.
-    - Generate the Prisma client.
-    - Apply any pending migrations to the database using Prisma.
-    - Create and run CDN ngix docker image.
+Starts the frontend application in dev mode.
+```bash
+npm run dev:app
+```
 
-    > **⚠️ Warning:**  
-    > If you encounter any difficulties or something doesn't go as planned, read [this file](./scripts/README.md) to execute it manually.
+---
 
-2. Create a user; open a browser to [localhost:3000/sign-up](http://localhost:3000/sign-up) and sign up.
+## UI
 
-3. _Optionally_, you can run the following exactly script to generate and fill database with fake data:
+Adds new UI components from the app.
+```bash
+npm run ui:add
+```
 
-    ```bash
-    npm run setup:data --user=<user_id_created_before>
-    ```
+---
 
-    > You can find user ID on the [personal information page](http://localhost:3000/account/profile)
+## Setup
 
-### Build and run
+Runs all setup tasks, including DB and CDN setup.
+```bash
+npm run setup
+```
 
-1. Build project
+### Database Setup
+Initializes and sets up the database.
+```bash
+npm run setup:db
+```
 
-    ```bash
-    npm run build
-    ```
+### CDN Setup
+Sets up the CDN services required by the project.
+```bash
+npm run setup:cdn
+```
 
-    Please be sure that you can make a full production build before pushing code.
+### Environment Setup
+Creates and configures environment variable files (`.env`).
+```bash
+npm run setup:env
+```
 
-    Before commit, husky will run the build command to ensure that the project can be built successfully.
+### Seed Database
+Seeds the database with sample data.
+```bash
+npm run setup:data
+```
 
-2. Run project
+Generates sample transactions and inserts them into the database.
+```bash
+npm run setup:generate-transactions
+```
 
-    ```bash
-    npm run dev
-    ```
+---
 
-## Clean up
+## Clean
 
-You can select what to clean up by passing the following arguments:
+Removes all `node_modules` and build artifacts.
+```bash
+npm run clean
+```
 
-- Remove node_modules and all build artifacts
-    ```bash
-    npm run clean
-    ```
+### Clean Specific Artifacts
+Removes `.next`, `dist`, `.turbo`, and `storybook-static`.
+```bash
+npm run clean:build
+```
 
-- Clean build artifacts (.next, dist, .turbo, storybook-static)
-    ```bash
-    npm run clean:build
-    ```
+Cleans the TurboRepo cache only.
+```bash
+npm run clean:turbo
+```
 
-- Clean only Turbo cache
-    ```bash
-    npm run clean:turbo
-    ```
+Removes all `.env` files.
+```bash
+npm run clean:env
+```
 
-- Remove all .env files
-    ```bash
-    npm run clean:env
-    ```
+Cleans the database of all seeded sample data.
+```bash
+npm run clean:data
+```
 
-- Clean seeded database data
-    ```bash
-    npm run clean:db
-    ```
+---
 
+## Formatting & Linting
 
-## Linting & Formatting
+Formats all code files (TypeScript, Markdown, TSX) using Prettier.
 
 Make sure code is formatted and linted before committing.
-
-Run the following command to format and lint the code:
 
 ```bash
 npm run format
 ```
 
-## Debugging & Logging
+Runs lint checks using TurboRepo.
+```bash
+npm run lint
+```
 
-To debug the project, you can use the built-in debugging tools in your IDE or editor.
+---
 
-If you use VSCode, you can go to the `Run and Debug` section and select one of the following options.
+## Docker
 
-Remember that you must run `npm run dev` before starting the debugging session.
+### Network Setup
+Creates a Docker network if it doesn't already exist.
+```bash
+npm run docker:create-network
+```
 
-If you want to debug both simultaneously, you can select `Poveroh:app+api` in the `Run and Debug` section of VSCode.
-This will start both the frontend and backend in debug mode, allowing you to debug both at the same time.
+### Start Individual Dev Containers
+Starts the database container.
+```bash
+npm run docker-dev:db
+```
 
-### Frontend
+Starts the API container.
+```bash
+npm run docker-dev:api
+```
 
-If you run comand `npm run dev`, automatically the project will be started in debug mode, so in console you can see the logs and debug information.
+Starts the frontend app container.
+```bash
+npm run docker-dev:app
+```
 
-While coding, it is recommmended to use `logger.debug` to log debug information. In production, these logs will not be displayed, but in development mode, they will be visible in the console.
-Make sure to print debug information only when necessary, as it can clutter the console and make it harder to find important logs.
+Opens Prisma Studio inside a Docker container.
+```bash
+npm run docker-dev:studio
+```
 
-If you want to debug it, you can use the browser's developer tools or if you use VSCode, you can go in the `Run and Debug` section and select `Poveroh:app`.
+Starts the CDN container.
+```bash
+npm run docker-dev:cdn
+```
 
-### Backend
+### Start All Containers
+Starts all development containers.
+```bash
+npm run docker-dev
+```
 
-In backend, logs are printed in a folder `logs` under `api` folder. Logs file are in `gitignore`, so they are not pushed to the repository.
+Starts all production containers.
 
-Unlike the frontend, debug logs are not printed when running the `npm run dev` command, but only if `LOG_LEVEL` is set to `DEBUG`. Default value is `INFO`.
+It runs a script that download the latest Docker images and starts the containers.
+```bash
+npm run docker
+```
 
-Like the frontend, you can attach a debugger to the backend. If you use VSCode, you can go in the `Run and Debug` section and select `Poveroh:api`. 
+---
+
+## Prisma
+
+Generates the Prisma client based on schema.
+```bash
+npm run prisma:generate
+```
+
+Applies Prisma database migrations.
+```bash
+npm run prisma:migrate
+```
+
+Opens Prisma Studio to inspect and edit the database.
+```bash
+npm run prisma:studio
+```
+
+---
+
+## Management
+
+Publishes Storybook to [Chromatic](https://www.chromatic.com/).
+```bash
+npm run chromatic
+```
 
